@@ -10,23 +10,23 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Referencias a los botones
+        // Botones
         val btn1: Button = findViewById(R.id.btnSound1)
         val btn2: Button = findViewById(R.id.btnSound2)
         val btn3: Button = findViewById(R.id.btnSound3)
 
-        // Listener para cada botón
+        // Listeners
         btn1.setOnClickListener { playSound(R.raw.metal_pipe) }
-        btn2.setOnClickListener { playSound(R.raw.metal_pipe2) }
-        btn3.setOnClickListener { playSound(R.raw.metal_pipe3) }
+        btn2.setOnClickListener { playSound(R.raw.fah_sound) }
+        btn3.setOnClickListener { playSound(R.raw.indian_sound) }
     }
 
-    // Función que crea un MediaPlayer nuevo cada vez (permite reproducción simultánea)
+    // Función del MediaPlayer
     private fun playSound(soundResId: Int) {
         val mediaPlayer = MediaPlayer.create(this, soundResId)
 
         mediaPlayer.setOnCompletionListener { mp ->
-            mp.release()  // Muy importante: liberar memoria cuando termine
+            mp.release()
         }
 
         mediaPlayer.start()
